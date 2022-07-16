@@ -38,7 +38,7 @@ if (userDataForm)
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
-    console.log(`FORM: ${form}`);
+    //console.log(`FORM: ${form}`);
     await updateSettings(form, 'data');
 
     document.querySelector('.btn--green').textContent = 'Save settings';
@@ -66,10 +66,10 @@ if (userPasswordForm) {
 
 if (bookBtn) {
   bookBtn.addEventListener('click', e => {
-    console.log('button');
+    //console.log('button');
     e.target.textContent = 'Processing...';
     const tourId = e.target.dataset.tourId;
     bookTour(tourId);
-    console.log(tourId);
+    // console.log(tourId);
   });
 }

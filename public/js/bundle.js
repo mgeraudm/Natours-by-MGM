@@ -4,7 +4,7 @@ const $e8aab4af92df3c33$export$516836c6a9dfc573 = ()=>{
 };
 const $e8aab4af92df3c33$export$de026b00723010c1 = (type, msg)=>{
     $e8aab4af92df3c33$export$516836c6a9dfc573();
-    console.log("success alert");
+    //console.log('success alert');
     const markup = `<div class="alert alert--${type}>${msg}</div>`;
     document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
     window.setTimeout($e8aab4af92df3c33$export$516836c6a9dfc573, 2000);
@@ -15,13 +15,13 @@ const $dc99f9b0db77d9e6$export$596d806903d1f59e = async (email, password)=>{
     try {
         const res = await axios({
             method: "POST",
-            url: "http://127.0.0.1:8000/api/v1/users/login",
+            url: "/api/v1/users/login",
             data: {
                 email: email,
                 password: password
             }
         });
-        console.log(res.data.status);
+        // console.log(res.data.status);
         alert("Logged in successfully!");
         (0, $e8aab4af92df3c33$export$de026b00723010c1)("success", "Logged in successfully!");
         window.setTimeout(()=>{
@@ -36,17 +36,17 @@ const $dc99f9b0db77d9e6$export$a0973bcfe11b05c9 = async ()=>{
     try {
         const res = await axios({
             method: "GET",
-            url: "http://127.0.0.1:8000/api/v1/users/logout"
+            url: "/api/v1/users/logout"
         });
         location.reload(true);
         location.assign("/");
-        console.log(res.data.status);
+        // console.log(res.data.status);
         alert("Logged out successfully!");
         (0, $e8aab4af92df3c33$export$de026b00723010c1)("success", "Logged out successfully!");
         res.data.status;
     } catch (err) {
-        console.log(res.data.status);
-        console.log(err.response.data.message);
+        //console.log(res.data.status);
+        //console.log(err.response.data.message);
         alert("Error Logging out.");
         (0, $e8aab4af92df3c33$export$de026b00723010c1)("error", "Error Logging out");
     }
@@ -91,18 +91,20 @@ const $a44144c4cae2e2d6$export$4c5dd147b21b9176 = (locations)=>{
 
 const $1a5436cf184029dd$export$f558026a994b6051 = async (data, type)=>{
     try {
-        const url = type === "password" ? "http://127.0.0.1:8000/api/v1/users/updateMyPassword" : "http://127.0.0.1:8000/api/v1/users/updateMe";
+        const url = type === "password" ? "/api/v1/users/updateMyPassword" : "/api/v1/users/updateMe";
         const res = await axios({
             method: "PATCH",
             url: url,
             data: data
         });
         if (res.data.status === "success") {
-            console.log(`${type.toUpperCase()} updated successfully!`);
+            // console.log(`${type.toUpperCase()} updated successfully!`)
+            alert("success", `${type.toUpperCase()} updated successfully!`);
             (0, $e8aab4af92df3c33$export$de026b00723010c1)("success", `${type.toUpperCase()} updated successfully!`);
         }
     } catch (err) {
-        console.log(`error ${err.response.data.message}`);
+        // console.log(`error ${err.response.data.message}`);
+        alert("error", err.response.data.message);
         (0, $e8aab4af92df3c33$export$de026b00723010c1)("error", err.response.data.message);
     }
 };
@@ -115,8 +117,8 @@ const $11388bf57d312a1a$var$stripe = Stripe("pk_test_51KWBrzSGKmkk3pD9EQE5Beo0E7
 const $11388bf57d312a1a$export$8d5bdbf26681c0c2 = async (tourId)=>{
     try {
         //get check out session from API
-        const session = await axios(`http://127.0.0.1:8000/api/v1/bookings/checkout-session/${tourId}`);
-        console.log(`SESSION ${session}`);
+        const session = await axios(`/api/v1/bookings/checkout-session/${tourId}`);
+        //console.log(`SESSION ${session}`);
         /*create checkout form & creditcard
     await stripe.redirectToCheckout({
       sessionId: session.url
@@ -124,7 +126,7 @@ const $11388bf57d312a1a$export$8d5bdbf26681c0c2 = async (tourId)=>{
     */ //workaround:
         window.location.replace(session.data.session.url);
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         alert(err);
         (0, $e8aab4af92df3c33$export$de026b00723010c1)("error", err);
     }
@@ -157,7 +159,7 @@ if ($ad003ad2cccc2e2f$var$userDataForm) $ad003ad2cccc2e2f$var$userDataForm.addEv
     form.append("name", document.getElementById("name").value);
     form.append("email", document.getElementById("email").value);
     form.append("photo", document.getElementById("photo").files[0]);
-    console.log(`FORM: ${form}`);
+    //console.log(`FORM: ${form}`);
     await (0, $1a5436cf184029dd$export$f558026a994b6051)(form, "data");
     document.querySelector(".btn--green").textContent = "Save settings";
     location.reload();
@@ -179,11 +181,11 @@ if ($ad003ad2cccc2e2f$var$userPasswordForm) $ad003ad2cccc2e2f$var$userPasswordFo
     document.querySelector(".btn--save-password").textContent = "Save password";
 });
 if ($ad003ad2cccc2e2f$var$bookBtn) $ad003ad2cccc2e2f$var$bookBtn.addEventListener("click", (e)=>{
-    console.log("button");
+    //console.log('button');
     e.target.textContent = "Processing...";
     const tourId = e.target.dataset.tourId;
     (0, $11388bf57d312a1a$export$8d5bdbf26681c0c2)(tourId);
-    console.log(tourId);
+// console.log(tourId);
 });
 
 

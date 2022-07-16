@@ -26,7 +26,7 @@ mongoose
     useNewUrlParser: true
   })
   .then(() => {
-    console.log(`DB connection successful`);
+    //console.log(`DB connection successful`);
   });
 
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/tours.json`, 'utf-8'));
@@ -40,9 +40,9 @@ const importdata = async () => {
     // await Tour.create(tours, { validateBeforeSave: false });
     await User.create(users, { validateBeforeSave: false });
     //await Review.create(reviews, { validateBeforeSave: false });
-    console.log('Successfully loading DB!!');
+    //console.log('Successfully loading DB!!');
   } catch (err) {
-    console.log(err);
+   // console.log(err);
   }
   process.exit();
 };
@@ -52,9 +52,9 @@ const deletedata = async () => {
     // await Tour.deleteMany();
     await User.deleteMany();
     //await Review.deleteMany();
-    console.log('Successful DB Deletion!!');
+   // console.log('Successful DB Deletion!!');
   } catch (err) {
-    console.log(err);
+   // console.log(err);
   }
   process.exit();
 };
