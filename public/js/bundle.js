@@ -192,7 +192,7 @@ if ($ad003ad2cccc2e2f$var$bookBtn) $ad003ad2cccc2e2f$var$bookBtn.addEventListene
 // console.log(tourId);
 });
 const $ad003ad2cccc2e2f$var$alertMessage = document.querySelector("body").dataset.alert;
-if (alert) (0, $e8aab4af92df3c33$export$de026b00723010c1)("success", $ad003ad2cccc2e2f$var$alertMessage, 10);
+if ($ad003ad2cccc2e2f$var$alertMessage) (0, $e8aab4af92df3c33$export$de026b00723010c1)("success", $ad003ad2cccc2e2f$var$alertMessage, 10);
 
 
 //# sourceMappingURL=bundle.js.map
