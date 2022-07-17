@@ -8,6 +8,7 @@ const router = express.Router();
 router.get('/me', authController.protect, viewsController.getAccount);
 
 router.use(authController.isLoggedIn);
+router.use(viewsController.alerts);
 
 router.get(
   '/',

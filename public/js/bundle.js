@@ -1,13 +1,15 @@
+import "axios";
+
 const $e8aab4af92df3c33$export$516836c6a9dfc573 = ()=>{
     const el = document.querySelector(".alert");
     if (el) el.parentElement.removeChild(el);
 };
-const $e8aab4af92df3c33$export$de026b00723010c1 = (type, msg)=>{
+const $e8aab4af92df3c33$export$de026b00723010c1 = (type, msg, time = 5)=>{
     $e8aab4af92df3c33$export$516836c6a9dfc573();
     //console.log('success alert');
     const markup = `<div class="alert alert--${type}>${msg}</div>`;
     document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
-    window.setTimeout($e8aab4af92df3c33$export$516836c6a9dfc573, 2000);
+    window.setTimeout($e8aab4af92df3c33$export$516836c6a9dfc573, time * 1000);
 };
 
 
@@ -133,6 +135,8 @@ const $11388bf57d312a1a$export$8d5bdbf26681c0c2 = async (tourId)=>{
 };
 
 
+
+
 //DOM ELEMENTS
 const $ad003ad2cccc2e2f$var$mapBox = document.getElementById("map");
 const $ad003ad2cccc2e2f$var$loginForm = document.querySelector(".form--login");
@@ -187,6 +191,8 @@ if ($ad003ad2cccc2e2f$var$bookBtn) $ad003ad2cccc2e2f$var$bookBtn.addEventListene
     (0, $11388bf57d312a1a$export$8d5bdbf26681c0c2)(tourId);
 // console.log(tourId);
 });
+const $ad003ad2cccc2e2f$var$alertMessage = document.querySelector("body").dataset.alert;
+if (alert) (0, $e8aab4af92df3c33$export$de026b00723010c1)("success", $ad003ad2cccc2e2f$var$alertMessage, 10);
 
 
 //# sourceMappingURL=bundle.js.map
