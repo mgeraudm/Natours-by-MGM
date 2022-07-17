@@ -19,6 +19,7 @@ const viewRouter = require('./routes/viewRoutes');
 //testing if git wakes up
 
 const app = express();
+app.enable('trust proxy');
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
