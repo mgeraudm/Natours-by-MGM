@@ -5,7 +5,7 @@ import { displayMap } from './mapbox';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 import { showAlert } from './alert';
-import axios from 'axios';
+//import axios from 'axios';
 
 //DOM ELEMENTS
 const mapBox = document.getElementById('map');

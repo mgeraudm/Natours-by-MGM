@@ -23,6 +23,7 @@ const app = express();
 app.enable('trust proxy');
 
 app.set('view engine', 'pug');
+console.log(`DIRNAME ${__dirname}`);
 app.set('views', path.join(__dirname, 'views'));
 // 1) GLOBAL MIDDLEWARES
 // Set security HTTP headers
@@ -43,12 +44,13 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-//stripe webhooks
+/*stripe webhooks PRODUCTION
 app.post(
   '/webhook-checkout',
   bodyParser.raw({ type: 'application/json' }),
   bookingController.webhookcheckout
 );
+*/
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));

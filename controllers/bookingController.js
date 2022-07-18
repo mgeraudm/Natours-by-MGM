@@ -18,10 +18,13 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     expand: ['line_items'],
     payment_method_types: ['card'],
     //DEV:
-    //success_url: `${req.protocol}://${req.get('host')}/?tour=${req.params.tourId}&user=${req.user.id}&price${tour.price}`,
+    success_url: `${req.protocol}://${req.get('host')}/?tour=${
+      req.params.tourId
+    }&user=${req.user.id}&price${tour.price}`,
 
-    //PRODUCTION WITH WEBHOOKS
+    /*PRODUCTION WITH WEBHOOKS
     success_url: `${req.protocol}://${req.get('host')}/my-tours?alert=booking`,
+   */
     cancel_url: `${req.protocol}://${req.get('host')}/tour/${tour.slug}`,
     customer_email: req.user.email,
     client_reference_id: req.params.tourId,
@@ -42,7 +45,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   //create session as response to client
   res.status(200).json({ status: 'success', session });
 });
-/* DEV
+
+//DEV
 exports.createBookingCheckout = catchAsync(async (req, res, next) => {
   //temporary measure because it is an UNSECURE workaround while in test/development
   const { tour, user, price } = req.query;
@@ -50,9 +54,9 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
   await Booking.create({ tour, user, price });
   res.redirect(req.originalUrl.split('?')[0]);
 });
-*/
 
 //PRODUCTION WITH WEBHOOKS
+/*
 const createBookingCheckout = async session => {
   const tour = session.client_reference_id;
   const user = (await User.findOne({ email: session.customer_email })).id;
@@ -77,6 +81,7 @@ exports.webhookcheckout = (req, res, next) => {
     createBookingCheckout(event.data.object);
   res.status(200).json({ received: true });
 };
+*/
 
 exports.createBooking = factory.createOne(Booking);
 

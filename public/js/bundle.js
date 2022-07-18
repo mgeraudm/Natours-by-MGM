@@ -1,5 +1,3 @@
-import "axios";
-
 const $e8aab4af92df3c33$export$516836c6a9dfc573 = ()=>{
     const el = document.querySelector(".alert");
     if (el) el.parentElement.removeChild(el);
@@ -136,7 +134,7 @@ const $11388bf57d312a1a$export$8d5bdbf26681c0c2 = async (tourId)=>{
 
 
 
-
+//import axios from 'axios';
 //DOM ELEMENTS
 const $ad003ad2cccc2e2f$var$mapBox = document.getElementById("map");
 const $ad003ad2cccc2e2f$var$loginForm = document.querySelector(".form--login");
